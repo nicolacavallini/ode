@@ -48,11 +48,11 @@ def G2(l, x, nodes):
         Phi, info = integrate.odeint(lambda phi, alpha : g(phi, alpha, nodes[i+1], x, l), ini, np.linspace(nodes[i], nodes[i+1], 100000), full_output = 1)
         vec_f = np.append(vec_f, Phi[-1][0])
         ini = Phi[-1][0]
-    print 'approx f =', [(node, func) for node, func in zip(nodes, vec_f)]
-    print 'G2 =', np.flipud(vec_f).dot(clencurt_01(n)) 
+    #print 'approx f =', [(node, func) for node, func in zip(nodes, vec_f)]
+    #print 'G2 =', np.flipud(vec_f).dot(clencurt_01(n))
     return np.flipud(vec_f).dot(clencurt_01(n))
 
 
-print 'exact f =', [(node, func) for node, func in zip(nodes, f_vec(nodes, 1, 1))] #G2 dovrebbe approssimare G, e vec_f dovrebbe approssimare f
-print 'G(1, 1) =', G(1, 1)
+#print 'exact f =', [(node, func) for node, func in zip(nodes, f_vec(nodes, 1, 1))] #G2 dovrebbe approssimare G, e vec_f dovrebbe approssimare f
+#print 'G(1, 1) =', G(1, 1)
 y = G2(1, 1, nodes)
